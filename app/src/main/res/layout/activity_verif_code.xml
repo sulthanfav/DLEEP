@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bglogin"
+    tools:context=".VerifCodeActivity">
+
+    <ImageView
+        android:id="@+id/backarrowVerif"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/backarrow" />
+
+    <TextView
+        android:id="@+id/EnterVerif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:fontFamily="@font/montserratregular"
+        android:gravity="center"
+        android:text="Enter \n Verification Code"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/SubTitleUpdatePw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserratregular"
+        android:gravity="center"
+        android:text="We’ve sent an 4 digit code to your email."
+        android:textColor="@color/subtextgrey"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EnterVerif" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutCodeField"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SubTitleUpdatePw">
+
+        <EditText
+            android:id="@+id/codefield1"
+            android:layout_width="64dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/codefield"
+            android:inputType="number"
+            android:padding="20dp"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/codefield2"
+            android:layout_width="64dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:padding="20dp"
+            android:background="@drawable/codefield"
+            android:inputType="number"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/codefield3"
+            app:layout_constraintHorizontal_bias="0.41"
+            app:layout_constraintStart_toEndOf="@id/codefield1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/codefield3"
+            android:layout_width="64dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:padding="20dp"
+            android:background="@drawable/codefield"
+            android:inputType="number"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/codefield4"
+            app:layout_constraintHorizontal_bias="0.665"
+            app:layout_constraintStart_toEndOf="@id/codefield2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/codefield4"
+            android:layout_width="64dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:padding="20dp"
+            android:background="@drawable/codefield"
+            android:inputType="number"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/codefield3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/buttonVerify"
+        android:layout_width="326dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/ovalbrokengreybutton"
+        android:fontFamily="@font/montserratregular"
+        android:gravity="center"
+        android:text="@string/verify"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutCodeField" />
+
+    <TextView
+        android:id="@+id/textViewResend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:fontFamily="@font/montserratregular"
+        android:text="Resend"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/didntreceive"
+        app:layout_constraintTop_toBottomOf="@+id/buttonVerify" />
+
+    <TextView
+        android:id="@+id/didntreceive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserratregular"
+        android:text="Don't Have an Account?"
+        android:textColor="@color/subtextgrey"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonVerify" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

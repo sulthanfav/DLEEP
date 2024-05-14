@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Icon saat item dinavigasi aktif -->
+    <item android:drawable="@drawable/home_on" android:state_checked="true" android:state_enabled="true"/>
+    <!-- Icon saat item dinavigasi tidak aktif -->
+    <item android:drawable="@drawable/home_off" android:state_checked="false" android:state_enabled="true"/>
+</selector>

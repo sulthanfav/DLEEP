@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Icon saat item dinavigasi aktif -->
+    <item android:drawable="@drawable/alarm_on" android:state_checked="true" android:state_enabled="true"
+        android:width="34dp" android:height="34dp"/>
+    <!-- Icon saat item dinavigasi tidak aktif -->
+    <item android:drawable="@drawable/alarm_off" android:state_checked="false" android:state_enabled="true"
+        android:width="24dp" android:height="24dp"/>
+</selector>

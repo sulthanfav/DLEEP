@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutDisc"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/violetbox"
+    tools:context=".disc.DiscoverMeditationFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <Button
+        android:id="@+id/buttonAllStories"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/tab_button_pressed"
+        android:fontFamily="@font/montserratregular"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="All"
+        android:textColor="@drawable/tab_button_colors"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_editor_absoluteX="8dp"
+        app:layout_editor_absoluteY="62dp" />
+
+    <Button
+        android:id="@+id/buttonBreathing"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/tab_button_pressed"
+        android:fontFamily="@font/montserratregular"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="Breathing"
+        android:textColor="@drawable/tab_button_colors"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/buttonAllStories"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_editor_absoluteX="63dp"
+        app:layout_editor_absoluteY="62dp" />
+
+    <Button
+        android:id="@+id/buttonRelaxation"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/tab_button_pressed"
+        android:fontFamily="@font/montserratregular"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="Relaxation"
+        android:textColor="@drawable/tab_button_colors"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/buttonBreathing"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_editor_absoluteX="123dp"
+        app:layout_editor_absoluteY="62dp" />
+
+    <Button
+        android:id="@+id/buttonSleep"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/tab_button_pressed"
+        android:fontFamily="@font/montserratregular"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="Sleep"
+        android:textColor="@drawable/tab_button_colors"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonRelaxation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_editor_absoluteX="195dp"
+        app:layout_editor_absoluteY="62dp" />
+
+    <TextView
+        android:id="@+id/ResumeStories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserratregular"
+        android:text="Resume Playing"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonAllStories" />
+
+    <ImageView
+        android:id="@+id/ThumbOne"
+        android:layout_width="350dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/db"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ResumeStories" />
+
+    <TextView
+        android:id="@+id/ResumeDescOne"
+        android:layout_width="350dp"
+        android:layout_height="36dp"
+        android:text="In this meditation session, immerse yourself in the soothing practice of deep breathing, allowing each breath to gently wash away anxiety and usher in a sense of calm and peace. Find solace in the rhythm of your breath as you journey towards inner tranquility and emotional balance."
+        android:textColor="@color/brokenwhite"
+        android:textSize="9sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ThumbOne" />
+
+    <ImageView
+        android:id="@+id/ThumbTwo"
+        android:layout_width="350dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/md"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ResumeDescOne" />
+
+    <TextView
+        android:id="@+id/ResumeDescTwo"
+        android:layout_width="350dp"
+        android:layout_height="36dp"
+        android:text="Join us on a transformative meditation experience where you'll be guided to visualize and manifest your most cherished dreams and aspirations."
+        android:textColor="@color/brokenwhite"
+        android:textSize="9sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ThumbTwo" />
+
+    <TextView
+        android:id="@+id/Popularsess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserratregular"
+        android:text="Popular Sessions"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ResumeDescTwo"
+        tools:layout_editor_absoluteY="348dp" />
+
+    <TextView
+        android:id="@+id/SeeMoreStories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/montserratregular"
+        android:text="See More"
+        android:textColor="@color/brokenwhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ResumeDescTwo" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

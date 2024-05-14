@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="greybutton">#32FFFFFF</color>
+    <color name="brokenwhite">#80FFFFFF</color>
+    <color name="violetbox">#B307072D</color>
+    <color name="fullviolet">#07072D</color>
+    <color name="brokengrey">#B3D9D9D9</color>
+    <color name="thirtygrey">#4DD9D9D9</color>
+    <color name="subtextgrey">#7E879A</color>
+    <color name="blueedit">#000C43</color>
+    <color name="whitesave">#50DDDDEB</color>
+    <color name="scrolltextwhite">#50FFFFFF</color>
+    <color name="linewhite">#30FFFFFF</color>
+    <color name="seventywhite">#B3FFFFFF</color>
+    <color name="blueplayer">#001F68</color>
+    <color name="alarmname">#70FFFFFF</color>
+    <color name="toggle_on">#000C43</color>
+    <color name="toggle_off">#B5B5B5</color>
+    <color name="alarminput">#DDDDEB</color>
+</resources>

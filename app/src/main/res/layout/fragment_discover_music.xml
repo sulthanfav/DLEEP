@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".disc.DiscoverMusicFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutDisc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/violetbox">
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <Button
+            android:id="@+id/buttonAllMusic"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/tab_button_pressed"
+            android:fontFamily="@font/montserratregular"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="All"
+            android:textColor="@drawable/tab_button_colors"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_editor_absoluteX="8dp"
+            app:layout_editor_absoluteY="62dp" />
+
+        <Button
+            android:id="@+id/buttonClassical"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/tab_button_pressed"
+            android:fontFamily="@font/montserratregular"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="Classical"
+            android:textColor="@drawable/tab_button_colors"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/buttonAllMusic"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_editor_absoluteX="63dp"
+            app:layout_editor_absoluteY="62dp" />
+
+        <Button
+            android:id="@+id/buttonOrchestra"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/tab_button_pressed"
+            android:fontFamily="@font/montserratregular"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="Orchestra"
+            android:textColor="@drawable/tab_button_colors"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/buttonClassical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_editor_absoluteX="123dp"
+            app:layout_editor_absoluteY="62dp" />
+
+        <Button
+            android:id="@+id/buttonLoFi"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/tab_button_pressed"
+            android:fontFamily="@font/montserratregular"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="Lo-fi"
+            android:textColor="@drawable/tab_button_colors"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonOrchestra"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_editor_absoluteX="198dp"
+            app:layout_editor_absoluteY="62dp" />
+
+        <TextView
+            android:id="@+id/RecentlyStoriesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserratregular"
+            android:text="Recently Played"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonAllMusic" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRecentlyStories"
+            android:layout_width="378dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RecentlyStoriesTitle"
+            app:reverseLayout="true"
+            app:stackFromEnd="true"
+            tools:ignore="MissingConstraints"
+            tools:listitem="@layout/item_recently_music" />
+
+        <ImageView
+            android:id="@+id/MusicThumbOne"
+            android:layout_width="0dp"
+            android:layout_height="142dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/musicpic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerViewRecentlyStories" />
+
+        <TextView
+            android:id="@+id/Popularsess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/montserratregular"
+            android:text="Popular Sessions"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MusicThumbOne" />
+
+        <TextView
+            android:id="@+id/SeeMoreMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/montserratregular"
+            android:text="See More"
+            android:textColor="@color/brokenwhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/MusicThumbOne" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Popularsess"
+            app:spanCount="2"
+            tools:listitem="@layout/item_row_meditation" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

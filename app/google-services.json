@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "194738178198",
+    "firebase_url": "https://dleep-project-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "dleep-project",
+    "storage_bucket": "dleep-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194738178198:android:86449ccda42dc2627e5ab7",
+        "android_client_info": {
+          "package_name": "com.example.dleep"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiC0WwjKc4XXzyOc1w4E3RDVMVhTTbNMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194738178198:android:448d7defec2990c47e5ab7",
+        "android_client_info": {
+          "package_name": "com.example.dleep2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiC0WwjKc4XXzyOc1w4E3RDVMVhTTbNMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

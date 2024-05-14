@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="85dp"
+    android:layout_height="150dp"
+    android:layout_marginLeft="2.5dp"
+    android:background="@null"
+    android:elevation="3dp">
+
+
+    <ImageView
+        android:id="@+id/picJazzyMusic"
+        android:layout_width="80dp"
+        android:layout_height="90dp"
+        android:src="@drawable/jazzypic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/titleJazzy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="3dp"
+        android:fontFamily="@font/montserratregular"
+        android:singleLine="true"
+        android:text="Quiet Place"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/picJazzyMusic" />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/montserratregular"
+        android:text="Gentle and soothing sounds"
+        android:textColor="@color/brokenwhite"
+        android:textSize="9sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleJazzy" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
