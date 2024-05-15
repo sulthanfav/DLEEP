@@ -6,6 +6,9 @@ import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_MEDIA_ID
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.dleep2.data.RecentlyPlayedDao
+import com.example.dleep2.data.entities.RecentlyPlayed
 import com.example.dleep2.data.entities.Song
 import com.example.dleep2.exoplayer.MusicServiceConnection
 import com.example.dleep2.exoplayer.isPlayEnabled
@@ -14,11 +17,13 @@ import com.example.dleep2.exoplayer.isPrepared
 import com.example.dleep2.other.Constants.MEDIA_ROOT_ID
 import com.example.dleep2.other.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val musicServiceConnection: MusicServiceConnection
+    private val musicServiceConnection: MusicServiceConnection,
+    private val recentlyPlayedDao: RecentlyPlayedDao
 ) : ViewModel() {
     private val _mediaItems = MutableLiveData<Resource<List<Song>>>()
     val mediaItems: LiveData<Resource<List<Song>>> = _mediaItems
@@ -83,6 +88,14 @@ class MainViewModel @Inject constructor(
             }
         } else {
             musicServiceConnection.transportControls.playFromMediaId(mediaItem.mediaId, null)
+            saveRecentlyPlayed(mediaItem) // Simpan lagu ke database
+        }
+    }
+
+    private fun saveRecentlyPlayed(song: Song) {
+        viewModelScope.launch {
+            val recentlyPlayed = RecentlyPlayed(mediaId = song.mediaId, title = song.title)
+            recentlyPlayedDao.insert(recentlyPlayed)
         }
     }
 

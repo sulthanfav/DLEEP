@@ -62,6 +62,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.12.0")
     implementation(libs.androidx.monitor)
     implementation(libs.androidx.junit.ktx)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx)
     kapt("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation("com.google.dagger:hilt-android:2.48")
@@ -76,6 +78,8 @@ dependencies {
     implementation("com.google.android.exoplayer:extension-mediasession:2.19.1")
     implementation("androidx.multidex:multidex:2.0.1")
     testImplementation("junit:junit:4.13.2")
+    implementation ("androidx.room:room-runtime:2.5.0")
+    kapt ("androidx.room:room-compiler:2.5.0")
 
 }
 
