@@ -9,11 +9,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dleep2.adapters.RecentlyPlayedAdapter
+import com.example.dleep2.data.entities.Song
 import com.example.dleep2.databinding.FragmentDiscoverSoundsBinding
 import com.example.dleep2.ui.viewmodels.MainViewModel
 import com.example.dleep2.ui.viewmodels.RecentlyPlayedViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class DiscoverSoundsFragment : Fragment() {
@@ -21,9 +21,8 @@ class DiscoverSoundsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val recentlyPlayedViewModel: RecentlyPlayedViewModel by viewModels()
-    @Inject
-    lateinit var recentlyPlayedAdapter: RecentlyPlayedAdapter
-    lateinit var mainViewModel: MainViewModel
+    private lateinit var recentlyPlayedAdapter: RecentlyPlayedAdapter
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,8 +43,13 @@ class DiscoverSoundsFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        recentlyPlayedAdapter = RecentlyPlayedAdapter(emptyList()) { song ->
-            // Handle item click here
+        recentlyPlayedAdapter = RecentlyPlayedAdapter(emptyList()) { recentlyPlayed ->
+            // Convert RecentlyPlayed to Song
+            val song = Song(
+                mediaId = recentlyPlayed.mediaId,
+                title = recentlyPlayed.title,
+            )
+            mainViewModel.playOrToggleSong(song)
         }
         binding.recyclerViewRecently.apply {
             layoutManager =

@@ -25,4 +25,5 @@ object DatabaseModule {
     fun provideRecentlyPlayedDao(db: AppDatabase): RecentlyPlayedDao {
         return db.recentlyPlayedDao()
     }
+
 }

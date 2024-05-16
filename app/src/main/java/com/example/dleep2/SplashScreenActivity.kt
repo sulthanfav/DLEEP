@@ -30,7 +30,7 @@ class SplashScreenActivity : AppCompatActivity() {
         } else {
             // User is not authenticated, wait for SPLASH_DELAY then proceed to LoginActivity
             Handler().postDelayed({
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, LandingActivity::class.java)
                 startActivity(intent)
                 finish()
             }, SPLASH_DELAY)

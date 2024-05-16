@@ -6,12 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dleep2.data.entities.RecentlyPlayed
 import com.example.dleep2.databinding.ItemRecentlySoundBinding
 
-class RecentlyPlayedAdapter (
+class RecentlyPlayedAdapter(
     private var songs: List<RecentlyPlayed>,
     private val listener: (RecentlyPlayed) -> Unit
 ) : RecyclerView.Adapter<RecentlyPlayedAdapter.SongViewHolder>() {
-
-
 
     inner class SongViewHolder(private val binding: ItemRecentlySoundBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(song: RecentlyPlayed) {
