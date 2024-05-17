@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.dleep2"
-        minSdk = 34
+        minSdk = 31
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -76,6 +76,8 @@ dependencies {
     implementation("com.google.android.exoplayer:extension-mediasession:2.19.1")
     implementation("androidx.multidex:multidex:2.0.1")
     testImplementation("junit:junit:4.13.2")
+
+    implementation ("com.diogobernardino:williamchart:3.10.1")
 
 }
 

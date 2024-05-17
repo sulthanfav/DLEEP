@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
-        android:fontFamily="@font/montserratbold"
+        android:fontFamily="@font/montserratregular"
         android:text="Profile"
         android:textColor="@color/white"
         android:textSize="25sp"
