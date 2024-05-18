@@ -1,33 +1,50 @@
 package com.example.dleep2.profile
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.dleep2.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.example.dleep2.LoginActivity
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.DocumentSnapshot
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var db: FirebaseFirestore
+    private var currentUser: FirebaseUser? = null
+    private var userData: DocumentSnapshot? = null
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var buttonLogout: Button
+    private lateinit var buttonEdit: Button
+    private lateinit var buttonSave: Button
+    private lateinit var txtUsername: TextView
+    private lateinit var txtEmail: TextView
+    private lateinit var editUsername: EditText
+    private lateinit var editEmail: EditText
+    private lateinit var profdobvalues: TextView
+    private lateinit var profsname: TextView
+    private lateinit var profsemail: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+        mAuth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
+        // Dapatkan user saat ini dari Firebase Authentication
+        currentUser = mAuth.currentUser
     }
 
     override fun onCreateView(
@@ -35,26 +52,162 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        buttonLogout = view.findViewById(R.id.buttonlogout)
+        buttonEdit = view.findViewById(R.id.editprof)
+        buttonSave = view.findViewById(R.id.saveprof)
+        txtUsername = view.findViewById(R.id.profusnvalues)
+        txtEmail = view.findViewById(R.id.profemailvalues)
+        editUsername = view.findViewById(R.id.edit_profusnvalues)
+        editEmail = view.findViewById(R.id.edit_profemailvalues)
+        profdobvalues = view.findViewById(R.id.profdobvalues)
+        profsname = view.findViewById(R.id.profsname)
+        profsemail = view.findViewById(R.id.profsemail)
+
+        // Load data pengguna dari Firestore
+        loadUserData()
+
+        buttonLogout.setOnClickListener {
+            mAuth.signOut()
+            val intent = Intent(activity, LoginActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+            Toast.makeText(activity, "Logout Successful!", Toast.LENGTH_SHORT).show()
+        }
+
+        buttonEdit.setOnClickListener {
+            // Ketika tombol "Edit" diklik
+            buttonEdit.visibility = View.GONE // Sembunyikan tombol "Edit"
+            buttonSave.visibility = View.VISIBLE // Tampilkan tombol "Save"
+            enableEditText() // Aktifkan EditText untuk mengedit
+        }
+
+        buttonSave.setOnClickListener {
+            // Ketika tombol "Save" diklik
+            saveChanges() // Simpan perubahan
+            buttonSave.visibility = View.GONE // Sembunyikan tombol "Save"
+            buttonEdit.visibility = View.VISIBLE // Tampilkan tombol "Edit"
+            disableEditText() // Nonaktifkan EditText setelah penyimpanan
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun enableEditText() {
+        // Aktifkan EditText untuk pengeditan
+        editUsername.visibility = View.VISIBLE
+        editUsername.setText(txtUsername.text)
+        editEmail.visibility = View.VISIBLE
+        editEmail.setText(txtEmail.text)
+        txtUsername.visibility = View.GONE
+        txtEmail.visibility = View.GONE
+    }
+
+    private fun disableEditText() {
+        // Nonaktifkan EditText setelah penyimpanan
+        editUsername.visibility = View.GONE
+        txtUsername.visibility = View.VISIBLE
+        editEmail.visibility = View.GONE
+        txtEmail.visibility = View.VISIBLE
+    }
+
+    private fun saveChanges() {
+        // Implementasi untuk menyimpan perubahan
+        val newUsername = editUsername.text.toString()
+        val newEmail = editEmail.text.toString()
+
+        // Dapatkan referensi dokumen untuk pengguna saat ini
+        val user = mAuth.currentUser
+        user?.let { currentUser ->
+            val email = currentUser.email
+            email?.let {
+                val userRef = db.collection("users").document(email)
+
+                // Periksa apakah dokumen sudah ada sebelum memperbarui datanya
+                userRef.get().addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot.exists()) {
+                        // Dokumen sudah ada, lanjutkan dengan pembaruan
+                        val updates = hashMapOf(
+                            "username" to newUsername,
+                            "email" to newEmail
+                        )
+
+                        userRef.update(updates as Map<String, Any>)
+                            .addOnSuccessListener {
+                                // Jika penyimpanan berhasil
+                                Toast.makeText(
+                                    activity,
+                                    "Changes saved successfully!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                loadUserData() // Load data terbaru dari Firestore
+                                populateUserData() // Perbarui tampilan dengan data terbaru
+                            }
+                            .addOnFailureListener { e ->
+                                // Jika penyimpanan gagal
+                                Toast.makeText(activity, "Error: ${e.message}", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                    } else {
+                        // Dokumen belum ada, buat dokumen baru
+                        val userData = hashMapOf(
+                            "username" to newUsername,
+                            "email" to newEmail
+                        )
+
+                        userRef.set(userData)
+                            .addOnSuccessListener {
+                                // Jika penyimpanan berhasil
+                                Toast.makeText(
+                                    activity,
+                                    "User data created successfully!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                txtUsername.text = newUsername
+                                txtEmail.text = newEmail
+                            }
+                            .addOnFailureListener { e ->
+                                // Jika penyimpanan gagal
+                                Toast.makeText(activity, "Error: ${e.message}", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                    }
                 }
             }
+        }
     }
+
+    private fun loadUserData() {
+        currentUser?.let { user ->
+            val email = user.email
+            email?.let {
+                db.collection("users").document(email).get()
+                    .addOnSuccessListener { documentSnapshot ->
+                        userData = documentSnapshot
+                        populateUserData() // Panggil populateUserData() di sini
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(activity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }
+    }
+
+    private fun populateUserData() {
+        userData?.let { document ->
+            val username = document.getString("username")
+            val email = document.getString("email")
+            val dateOfBirth = document.getString("dateOfBirth")
+
+            txtUsername.text = username
+            txtEmail.text = email
+            profdobvalues.text = dateOfBirth
+
+            // Isi nilai-nilai lainnya seperti nama, email di header, dll.
+            profsname.text = username
+            profsemail.text = email
+        }
+    }
+
 }
