@@ -2,26 +2,29 @@ package com.example.dleep2.exoplayer
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
-import android.util.Log
 import androidx.media.MediaBrowserServiceCompat
-import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
-import com.google.android.exoplayer2.ext.mediasession.TimelineQueueNavigator
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.example.dleep2.exoplayer.callback.MusicPlaybackPreparer
 import com.example.dleep2.exoplayer.callback.MusicPlayerEventListener
 import com.example.dleep2.exoplayer.callback.MusicPlayerNotificationListener
 import com.example.dleep2.other.Constants.MEDIA_ROOT_ID
 import com.example.dleep2.other.Constants.NETWORK_ERROR
+import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
+import com.google.android.exoplayer2.ext.mediasession.TimelineQueueNavigator
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 private const val SERVICE_TAG = "MusicService"
@@ -169,7 +172,6 @@ class MusicService : MediaBrowserServiceCompat() {
         }
     }
 }
-
 
 
 

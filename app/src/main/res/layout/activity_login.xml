@@ -38,7 +38,6 @@
         android:layout_height="42dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/textboxform"
-        android:drawableRight="@drawable/eyeshows"
         android:inputType="textPassword"
         android:paddingRight="8dp"
         android:textColorHint="@color/black"
@@ -47,6 +46,28 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <ImageView
+        android:id="@+id/eyeShows"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/eyeshows"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="@+id/editTextPassword"
+        app:layout_constraintTop_toTopOf="@+id/editTextPassword" />
+
+    <ImageView
+        android:id="@+id/eyeHides"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/eyehides"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="@+id/editTextPassword"
+        app:layout_constraintTop_toTopOf="@+id/editTextPassword" />
 
     <Button
         android:id="@+id/buttonLogin2"

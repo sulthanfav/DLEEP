@@ -8,7 +8,7 @@ fun MediaMetadataCompat.toSong(): Song? {
         Song(
             it.mediaId ?: "",
             it.title.toString(),
-            it.subtitle.toString(),
+            it.extras?.getString("type") ?: "" // Ekstraksi informasi type
         )
     }
 }

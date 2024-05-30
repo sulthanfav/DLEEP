@@ -60,4 +60,12 @@
     <item name="sleeptrackertitle" type="id" />
     <item name="chart" type="id" />
     <item name="barchart" type="id" />
+    <item name="buttonFairytale" type="id" />
+    <item name="buttonFolklore" type="id" />
+    <item name="buttonLifestyle" type="id" />
+    <item name="taleofthewoods" type="id" />
+    <item name="recyclerViewStories" type="id" />
+    <item name="WhispersofAK" type="id" />
+    <item name="seemore3" type="id" />
+    <item name="recyclerViewStories2" type="id" />
 </resources>

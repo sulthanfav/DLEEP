@@ -46,7 +46,6 @@ class MainViewModel @Inject constructor(
                     Song(
                         it.mediaId!!,
                         it.description.title.toString(),
-                        it.description.subtitle.toString(),
                     )
                 }
                 _mediaItems.postValue(Resource.success(items))

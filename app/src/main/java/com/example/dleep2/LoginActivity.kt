@@ -2,7 +2,10 @@ package com.example.dleep2
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.util.Patterns
+import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dleep2.databinding.ActivityLoginBinding
@@ -14,6 +17,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    private lateinit var eyeShows: ImageView
+    private lateinit var eyeHides: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +27,26 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+
+        // Find references to eyeShows and eyeHides ImageViews
+        eyeShows = binding.eyeShows
+        eyeHides = binding.eyeHides
+
+        // Set up click listeners for eyeShows and eyeHides
+        eyeShows.setOnClickListener {
+            binding.editTextPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            eyeShows.visibility = View.GONE
+            eyeHides.visibility = View.VISIBLE
+            binding.editTextPassword.setSelection(binding.editTextPassword.length())
+        }
+
+        eyeHides.setOnClickListener {
+            binding.editTextPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            eyeShows.visibility = View.VISIBLE
+            eyeHides.visibility = View.GONE
+            binding.editTextPassword.setSelection(binding.editTextPassword.length())
+        }
+
 
         binding.textViewForgotPw.setOnClickListener {
             val intent = Intent(this, ForgotPasswordActivity::class.java)

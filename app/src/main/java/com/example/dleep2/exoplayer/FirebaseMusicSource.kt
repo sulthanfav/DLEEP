@@ -1,22 +1,27 @@
 package com.example.dleep2.exoplayer
 
-import android.net.Uri
+import android.os.Bundle
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.MediaBrowserCompat.MediaItem.FLAG_PLAYABLE
 import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.MediaMetadataCompat
-import android.support.v4.media.MediaMetadataCompat.*
-import android.util.Log
+import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_DISPLAY_TITLE
+import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_MEDIA_ID
+import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_MEDIA_URI
+import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_TITLE
 import androidx.core.net.toUri
+import com.example.dleep2.data.remote.MusicDatabase
+import com.example.dleep2.exoplayer.State.STATE_CREATED
+import com.example.dleep2.exoplayer.State.STATE_ERROR
+import com.example.dleep2.exoplayer.State.STATE_INITIALIZED
+import com.example.dleep2.exoplayer.State.STATE_INITIALIZING
+import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
-import com.example.dleep2.data.remote.MusicDatabase
-import com.example.dleep2.exoplayer.State.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import com.google.android.exoplayer2.MediaItem
 
 
 class FirebaseMusicSource @Inject constructor(
@@ -34,10 +39,13 @@ class FirebaseMusicSource @Inject constructor(
                 .putString(METADATA_KEY_TITLE, song.title)
                 .putString(METADATA_KEY_DISPLAY_TITLE, song.title)
                 .putString(METADATA_KEY_MEDIA_URI, song.songUrl)
+                // Menambahkan informasi type ke MediaMetadataCompat
+                .putString("type", song.type)
                 .build()
         }
         state = STATE_INITIALIZED
     }
+
 
     fun asMediaSource(dataSourceFactory: DefaultDataSourceFactory): ConcatenatingMediaSource {
         val concatenatingMediaSource = ConcatenatingMediaSource()
@@ -54,8 +62,12 @@ class FirebaseMusicSource @Inject constructor(
     fun asMediaItems() = songs.map { song ->
         val desc = MediaDescriptionCompat.Builder()
             .setMediaUri(song.getString(METADATA_KEY_MEDIA_URI).toUri())
-            .setTitle(song.description.title)
-            .setMediaId(song.description.mediaId)
+            .setTitle(song.getString(METADATA_KEY_TITLE))
+            .setMediaId(song.getString(METADATA_KEY_MEDIA_ID))
+            // Menambahkan informasi type ke MediaDescriptionCompat
+            .setExtras(Bundle().apply {
+                putString("type", song.getString("type"))
+            })
             .build()
         MediaBrowserCompat.MediaItem(desc, FLAG_PLAYABLE)
     }.toMutableList()
