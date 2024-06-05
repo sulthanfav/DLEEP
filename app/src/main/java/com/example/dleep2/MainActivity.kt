@@ -3,6 +3,7 @@ package com.example.dleep2
 import android.os.Bundle
 import android.support.v4.media.session.PlaybackStateCompat
 import android.view.View
+import android.widget.ImageView
 import android.widget.SeekBar
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -53,6 +54,8 @@ class MainActivity : AppCompatActivity() {
 
     private var shouldUpdateSeekbar = true
 
+    private lateinit var imageView2: ImageView
+
     private val onNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -88,6 +91,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setMusicPlayerVisibility(false)
+        imageView2 = binding.imageView2
 
         bottomNavigationView = binding.bottomNavigationView
         bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
@@ -149,12 +153,13 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun switchViewPagerToCurrentSong(song: Song) {
-        val newItemIndex = swipeSongAdapter.songs.indexOf(song)
-        if (newItemIndex != -1) {
-            binding.vpSong.currentItem = newItemIndex
+        val newIndex = swipeSongAdapter.songs.indexOfFirst { it.mediaId == song.mediaId }
+        if (newIndex != -1) {
+            binding.vpSong.currentItem = newIndex
             curPlayingSong = song
         }
     }
+
 
     private fun setMusicPlayerVisibility(visible: Boolean) {
         binding.apply {
@@ -177,6 +182,10 @@ class MainActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                         result.data?.let { songs ->
                             swipeSongAdapter.songs = songs
+                            if (songs.isNotEmpty()) {
+                                glide.load((curPlayingSong ?: songs[0]).imageUrl)
+                                    .into(imageView2)
+                            }
                             switchViewPagerToCurrentSong(curPlayingSong ?: return@observe)
                         }
                     }
@@ -189,6 +198,7 @@ class MainActivity : AppCompatActivity() {
             if (it == null) return@observe
 
             curPlayingSong = it.toSong()
+            glide.load(curPlayingSong?.imageUrl).into(imageView2)
             switchViewPagerToCurrentSong(curPlayingSong ?: return@observe)
         }
         mainViewModel.playbackState.observe(this) { state ->

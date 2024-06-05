@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dleep2.R
+import com.example.dleep2.SeeMoreFragment
 import com.example.dleep2.adapters.AsmrAdapter
 import com.example.dleep2.adapters.RecentlyPlayedAdapter
+import com.example.dleep2.adapters.TcoybAdapter
 import com.example.dleep2.data.entities.Song
 import com.example.dleep2.databinding.FragmentDiscoverSoundsBinding
 import com.example.dleep2.other.Status
@@ -25,6 +28,8 @@ class DiscoverSoundsFragment : Fragment() {
 
     @Inject
     lateinit var AsmrAdapter: AsmrAdapter
+    @Inject
+    lateinit var TcoybAdapter: TcoybAdapter
     private val recentlyPlayedViewModel: RecentlyPlayedViewModel by viewModels()
     private lateinit var recentlyPlayedAdapter: RecentlyPlayedAdapter
     private lateinit var mainViewModel: MainViewModel
@@ -47,15 +52,46 @@ class DiscoverSoundsFragment : Fragment() {
         }
         setupRecyclerView()
         setuprecyclerViewASMR()
+        setuprecyclerViewTcoyb()
         AsmrAdapter.setItemClickListener {
             mainViewModel.playOrToggleSong(it)
         }
+        TcoybAdapter.setItemClickListener {
+            mainViewModel.playOrToggleSong(it)
+        }
         subscribeToObservers()
+        binding.textView28.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("filter_type", "lofi")
+            }
+            val seeMoreFragment = SeeMoreFragment().apply {
+                arguments = bundle
+            }
+            // Pindah ke fragment SeeMore
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, seeMoreFragment)
+                .addToBackStack(null)
+                .commit()
+        }
+        binding.textView30.setOnClickListener {
+            // Pindah ke fragment SeeMore
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, SeeMoreFragment())
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     private fun setuprecyclerViewASMR() {
         binding.recyclerViewASMR.apply {
             adapter = AsmrAdapter
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        }
+
+    }
+    private fun setuprecyclerViewTcoyb() {
+        binding.recyclerViewTCOYB.apply {
+            adapter = TcoybAdapter
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
@@ -82,7 +118,10 @@ class DiscoverSoundsFragment : Fragment() {
             when(result.status) {
                 Status.SUCCESS -> {
                     result.data?.let { songs ->
-                        AsmrAdapter.songs = songs
+                        // Filter lagu yang memiliki type "lofi"
+                        val lofiSongs = songs.filter { it.type == "lofi" }
+                        AsmrAdapter.songs = lofiSongs
+                        TcoybAdapter.songs = songs
                     }
                 }
                 Status.ERROR -> Unit
@@ -90,6 +129,7 @@ class DiscoverSoundsFragment : Fragment() {
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

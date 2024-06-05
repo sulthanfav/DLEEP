@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import com.bumptech.glide.RequestManager
 import com.example.dleep2.R
 import com.example.dleep2.data.entities.Song
-import com.example.dleep2.databinding.ItemRowDailyBinding
+import com.example.dleep2.databinding.ItemAsmrSoundBinding
 import javax.inject.Inject
 
-class SongAdapter @Inject constructor(
+class AsmrAdapter @Inject constructor(
     private val glide: RequestManager
-) : BaseSongAdapter(R.layout.item_row_daily) {
+) : BaseSongAdapter(R.layout.item_asmr_sound) {
 
     override val differ = AsyncListDiffer(this, diffCallback)
 
@@ -22,23 +22,24 @@ class SongAdapter @Inject constructor(
         }
     }
 
-    inner class SongViewHolder(private val binding: ItemRowDailyBinding) : BaseSongAdapter.SongViewHolder(binding.root) {
-        val judul = binding.judul
-        val pic = binding.pic // Menambahkan inisialisasi pic
+    inner class SongViewHolder(private val binding: ItemAsmrSoundBinding) : BaseSongAdapter.SongViewHolder(binding.root) {
+        val judul = binding.judulASMR
+        val pic = binding.pic
 
         fun bind(song: Song) {
             judul.text = song.title
             glide.load(song.imageUrl).into(pic)
 
             itemView.setOnClickListener {
-                onItemClickListener?.invoke(song) // Menggunakan invoke untuk memanggil listener
+                onItemClickListener?.let { click ->
+                    click(song)
+                }
             }
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseSongAdapter.SongViewHolder {
-        val binding = ItemRowDailyBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemAsmrSoundBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SongViewHolder(binding)
     }
 }

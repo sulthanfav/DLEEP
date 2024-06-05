@@ -24,9 +24,11 @@ class RowSoundsHomeAdapter @Inject constructor(
 
     inner class SongViewHolder(private val binding: ItemRowSoundsBinding) : BaseSongAdapter.SongViewHolder(binding.root) {
         val judul = binding.textView22
+        val pic = binding.pic
 
         fun bind(song: Song) {
             judul.text = song.title
+            glide.load(song.imageUrl).into(pic)
 
             itemView.setOnClickListener {
                 onItemClickListener?.let { click ->

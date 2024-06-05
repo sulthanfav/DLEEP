@@ -4,6 +4,7 @@ data class Song(
     val mediaId: String = "",
     val title: String = "",
     val songUrl: String = "",
+    val imageUrl: String = "",
     val type: String = "" // Menambahkan properti type
 )
 

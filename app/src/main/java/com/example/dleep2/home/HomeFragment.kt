@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dleep2.R
+import com.example.dleep2.SeeMoreFragment
 import com.example.dleep2.adapters.RowSoundsHomeAdapter
 import com.example.dleep2.adapters.SongAdapter
 import com.example.dleep2.databinding.FragmentHomeBinding
@@ -41,6 +42,28 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             mainViewModel.playOrToggleSong(it)
         }
         subscribeToObservers()
+
+        binding.seemore1.setOnClickListener {
+            // Pindah ke fragment SeeMore
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, SeeMoreFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+        binding.seemore2.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("filter_type", "all")
+            }
+            val seeMoreFragment = SeeMoreFragment().apply {
+                arguments = bundle
+            }
+            // Pindah ke fragment SeeMore
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frame, seeMoreFragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
     }
 
     private fun setupRecyclerView() {
@@ -58,7 +81,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setuprecyclerViewSounds() {
         binding.recyclerViewSounds.apply {
             adapter = RowSoundsHomeAdapter
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
         mainViewModel.mediaItems.observe(viewLifecycleOwner) { resource ->
@@ -73,8 +95,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             when(result.status) {
                 Status.SUCCESS -> {
                     result.data?.let { songs ->
+                        val lofiSongs = songs.filter { it.type == "all" }
+                        RowSoundsHomeAdapter.songs = lofiSongs
                         songAdapter.songs = songs
-                        RowSoundsHomeAdapter.songs = songs
                     }
                 }
                 Status.ERROR -> Unit

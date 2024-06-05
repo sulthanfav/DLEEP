@@ -43,9 +43,13 @@ class MainViewModel @Inject constructor(
             ) {
                 super.onChildrenLoaded(parentId, children)
                 val items = children.map {
+                    val extras = it.description.extras
                     Song(
                         it.mediaId!!,
                         it.description.title.toString(),
+                        it.description.mediaUri.toString(),
+                        it.description.iconUri.toString(),
+                        extras?.getString("type") ?: "" // Menambahkan pemrosesan untuk properti type
                     )
                 }
                 _mediaItems.postValue(Resource.success(items))
@@ -60,6 +64,7 @@ class MainViewModel @Inject constructor(
             }
         }
     }
+
 
     fun skipToNextSong() {
         musicServiceConnection.transportControls.skipToNext()
@@ -98,13 +103,6 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun updateCurPlayingSong(song: Song) {
-        val updatedSong = MediaMetadataCompat.Builder()
-            .putString(METADATA_KEY_MEDIA_ID, song.mediaId)
-            .putString(MediaMetadataCompat.METADATA_KEY_TITLE, song.title)
-            .build()
-        _curPlayingSong.postValue(updatedSong)
-    }
 
     override fun onCleared() {
         super.onCleared()

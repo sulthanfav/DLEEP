@@ -39,8 +39,9 @@ class FirebaseMusicSource @Inject constructor(
                 .putString(METADATA_KEY_TITLE, song.title)
                 .putString(METADATA_KEY_DISPLAY_TITLE, song.title)
                 .putString(METADATA_KEY_MEDIA_URI, song.songUrl)
-                // Menambahkan informasi type ke MediaMetadataCompat
-                .putString("type", song.type)
+                .putString(MediaMetadataCompat.METADATA_KEY_DISPLAY_ICON_URI, song.imageUrl)
+                .putString(MediaMetadataCompat.METADATA_KEY_ALBUM_ART_URI, song.imageUrl)
+                .putString("type", song.type) // Perbarui properti type
                 .build()
         }
         state = STATE_INITIALIZED
@@ -62,15 +63,16 @@ class FirebaseMusicSource @Inject constructor(
     fun asMediaItems() = songs.map { song ->
         val desc = MediaDescriptionCompat.Builder()
             .setMediaUri(song.getString(METADATA_KEY_MEDIA_URI).toUri())
-            .setTitle(song.getString(METADATA_KEY_TITLE))
-            .setMediaId(song.getString(METADATA_KEY_MEDIA_ID))
-            // Menambahkan informasi type ke MediaDescriptionCompat
+            .setTitle(song.description.title)
+            .setMediaId(song.description.mediaId)
+            .setIconUri(song.description.iconUri)
             .setExtras(Bundle().apply {
                 putString("type", song.getString("type"))
             })
             .build()
         MediaBrowserCompat.MediaItem(desc, FLAG_PLAYABLE)
     }.toMutableList()
+
 
     private val onReadyListeners = mutableListOf<(Boolean) -> Unit>()
 
