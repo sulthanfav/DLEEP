@@ -4,6 +4,8 @@ object Constants {
 
     const val SONG_COLLECTION = "songs"
 
+    const val VIDEO_COLLECTION = "video"
+
     const val MEDIA_ROOT_ID = "root_id"
 
     const val NETWORK_ERROR = "NETWORK_ERROR"

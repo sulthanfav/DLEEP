@@ -94,31 +94,31 @@
             app:layout_editor_absoluteY="62dp" />
 
         <TextView
-            android:id="@+id/RecentlyStoriesTitle"
+            android:id="@+id/classicalrend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserratregular"
-            android:text="Recently Played"
+            android:text="Classical Renditions"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buttonAllMusic" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewRecentlyStories"
-            android:layout_width="378dp"
-            android:layout_height="170dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:orientation="vertical"
+            android:id="@+id/recyclerViewClassicalRend"
+            android:layout_width="350dp"
+            android:layout_height="135dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/RecentlyStoriesTitle"
+            app:layout_constraintTop_toBottomOf="@+id/classicalrend"
             app:reverseLayout="true"
+            app:spanCount="4"
             app:stackFromEnd="true"
             tools:ignore="MissingConstraints"
             tools:listitem="@layout/item_recently_music" />
@@ -131,7 +131,7 @@
             android:src="@drawable/musicpic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/recyclerViewRecentlyStories" />
+            app:layout_constraintTop_toBottomOf="@id/recyclerViewClassicalRend" />
 
         <TextView
             android:id="@+id/Popularsess"
@@ -146,33 +146,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/MusicThumbOne" />
 
-        <TextView
-            android:id="@+id/SeeMoreMusic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/montserratregular"
-            android:text="See More"
-            android:textColor="@color/brokenwhite"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/MusicThumbOne" />
-
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:id="@+id/recyclerViewPopularSess"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Popularsess"
-            app:spanCount="2"
+            app:reverseLayout="true"
+            app:spanCount="4"
+            app:stackFromEnd="true"
+            tools:ignore="MissingConstraints"
             tools:listitem="@layout/item_row_meditation" />
 
 

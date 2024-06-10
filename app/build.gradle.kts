@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.androidx.junit.ktx)
     implementation(libs.androidx.room.common)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.activity)
     kapt("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation("com.google.dagger:hilt-android:2.48")
@@ -82,6 +83,7 @@ dependencies {
     kapt ("androidx.room:room-compiler:2.5.0")
 
     implementation ("com.diogobernardino:williamchart:3.10.1")
+
 
 }
 

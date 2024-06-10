@@ -14,4 +14,27 @@
     <string name="hello_blank_fragment">hello</string>
     <string name="channel_name">Nama Channel Notifikasi</string>
     <string name="channel_description">Deskripsi Channel Notifikasi</string>
+    <string name="scrolltext">
+        Film "The Boy and The Heron" (atau "The Tale of The Princess Kaguya"
+        dalam judul aslinya) adalah film adaptasi dari cerita rakyat Jepang
+        yang terkenal, "The Tale of the Bamboo Cutter" atau "Kaguya-hime no Monogatari."
+        \n\n
+        Sinopsis film ini mengikuti kisah seorang petani yang menemukan seorang bayi perempuan yang
+        sangat kecil di dalam sebuah batang bambu. Bayi ini tumbuh dengan sangat cepat dan menjadi
+        seorang gadis muda yang cantik, dikenal sebagai Putri Kaguya. Keluarga petani tersebut
+        membesarkan Kaguya dengan penuh kasih sayang, namun Kaguya merasa terikat dengan takdirnya
+        yang sebenarnya sebagai putri dari bulan.
+
+        \n\n
+
+        Kaguya semakin terkenal karena kecantikannya, dan banyak pangeran yang datang untuk
+        meminangnya. Namun, Kaguya menolak mereka semua karena dia tahu bahwa takdirnya tidak ada
+        hubungannya dengan dunia manusia. Cerita ini menggambarkan perjuangan Kaguya antara
+        keinginannya untuk hidup sebagai manusia di Bumi dan takdirnya yang sebenarnya sebagai putri
+        dari bulan.
+
+        \n\n
+
+        Film ini dianggap sebagai salah satu karya masterpiece dari Studio Ghibli karena visualnya
+        yang memukau dan cerita yang mendalam tentang kehidupan, cinta, dan takdir.</string>
 </resources>
