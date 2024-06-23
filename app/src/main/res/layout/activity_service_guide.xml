@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ServiceGuideActivity">
+
+    <TextView
+        android:id="@+id/profPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/montserratregular"
+        android:text="Profile"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="363dp"
+        android:layout_height="635dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/violetbox">
+
+        <ImageButton
+            android:id="@+id/backarrowserviceguide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/transparentbutton"
+            android:src="@drawable/backarrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+
+        </ImageButton>
+
+        <TextView
+            android:id="@+id/serviceguide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserratbold"
+            android:text="Service Guide"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.049"
+            app:layout_constraintStart_toEndOf="@id/backarrowserviceguide"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/serviceguide"
+            app:srcCompat="@drawable/linesg">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/effectivefrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/montserratregular"
+            android:text="Effective from April 1, 2024."
+            android:textColor="@color/scrolltextwhite"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+        <ScrollView
+            android:id="@+id/serviceguideTextContainer"
+            android:layout_width="330dp"
+            android:layout_height="552dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/effectivefrom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/serviceguideText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome to DLEEP, your trusted companion for sleep and meditation! Here at DLEEP, we are proud to introduce you to a holistic approach to enhancing the quality of your sleep and meditation experience. This app is not just designed as a mere sleep or meditation aid; DLEEP is a friend that will guide you towards a more balanced life, with deeper sleep and calmer mind.
+                \n \n Exploring DLEEP Features in Depth: Smart Alarm: Our alarm feature is set to enhance the quality of your waking up by optimizing the amount of sleep you need. By calculating sleep time based on your input and the wake-up time you set, our alarm is designed to wake you up during the lightest sleep phase, making you feel fresher and ready to embrace the day. Plus, your entire sleep duration will be automatically recorded in our sleep tracker feature, providing useful analysis of your sleep patterns.
+                \n \n Sleep Tracker: With this feature, DLEEP offers deep insights into your sleep. From sleep duration to pattern analysis, we help you better understand the quality of your rest. This feature is a crucial step in identifying areas for improvement to achieve optimal sleep.
+                \n \n Sounds and Noises: As you explore DLEEP, you will come across the Discover feature, a rich library offering various sounds and noises. From soothing nature sounds to calming white noise, each audio has been carefully selected to help you unwind from the daily hustle and bustle and achieve peace in sleep. This feature makes it easy for you to search and find the perfect sound for your night, all in easily accessible audio format.
+                \n \n Stories and Meditation: Within the Discover feature, we also provide Stories and Meditation in captivating visual (video) format. These stories and meditation sessions are designed to enrich your relaxation and introspection experience, offering visual guidance to enhance your concentration and inner peace. From engaging bedtime stories to profound meditation guides, all this content is presented to enrich your nightly routine or meditation sessions.
+                \n \n DLEEP is not just about creating a better night; it's about inspiring a better day through quality rest and meaningful meditation. We are committed to accompanying every step of your journey towards physical and mental well-being. Welcome to the DLEEP community. With us, discover the power of quality sleep and deep meditation. We are delighted to be part of your journey towards a healthier and happier life.
+                "
+                android:fontFamily="@font/montserratregular"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:lineSpacingExtra="4dp"/>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

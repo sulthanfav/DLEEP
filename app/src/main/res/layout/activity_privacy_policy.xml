@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".PrivacyPolicyActivity">
+
+    <TextView
+        android:id="@+id/profPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/montserratregular"
+        android:text="Profile"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="363dp"
+        android:layout_height="635dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/violetbox">
+
+        <ImageButton
+            android:id="@+id/backarrowprivacypolicy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/transparentbutton"
+            android:src="@drawable/backarrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+
+        </ImageButton>
+
+        <TextView
+            android:id="@+id/privacypolicy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserratbold"
+            android:text="Privacy Policy"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.049"
+            app:layout_constraintStart_toEndOf="@id/backarrowprivacypolicy"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/privacypolicy"
+            app:srcCompat="@drawable/linesg">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/effectivefrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/montserratregular"
+            android:text="Effective from April 1, 2024."
+            android:textColor="@color/scrolltextwhite"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+        <ScrollView
+            android:id="@+id/privacypolicyTextContainer"
+            android:layout_width="330dp"
+            android:layout_height="552dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/effectivefrom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/serviceguideText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome to DLEEP – your trusted sleep and meditation companion app. Your privacy and the security of your personal data are of utmost importance to us. This Privacy Policy is designed to inform you about how we collect, use, and protect your personal information when you use our app. By utilizing DLEEP, you consent to the collection and use of information in accordance with this policy.
+
+        \n\n Information We Collect
+        \n To provide the most personalized and beneficial experience, DLEEP requires some personal information from you, including:
+
+        \n Email and Password: Used as your login credentials for access to the app.
+        \n Date of Birth: We use your date of birth to tailor sleep duration recommendations based on age.
+        \n App Usage Data: This includes, but is not limited to, data related to the features you use, your sound and meditation preferences, and your sleep tracking information.
+
+        \n\n Use of Information
+        \nThe information you provide to DLEEP is used to:
+
+        \n Create and manage your account.
+        \n Tailor your sleep and meditation experience to your personal needs.
+        \n Provide analysis and statistics about your sleep patterns.
+        \n Improve and develop new features based on user feedback and usage patterns.
+        \n Communicate with you, including but not limited to, updates on the app, offers, and newsletters.
+
+        \n\n Sharing of Information
+        \n DLEEP is committed to not selling, renting, or sharing your personal information with third parties without your consent, except under the following circumstances:
+
+        \n Service Providers: We may share your information with service providers we use to support our business operations, such as cloud hosting, analytics services, and customer support services, provided they agree to keep this information confidential.
+        \n Legal Compliance: We will share personal information when required by law or if we believe in good faith that such action is necessary to comply with legal proceedings, protect the security or integrity of our users, or protect the rights, property, or safety of DLEEP.
+
+        \n\n Access and Control Over Your Information
+        \n You have the right to access, update, and delete your personal information. If you wish to make a request or have questions about your privacy, please contact us using the contact details provided in the app.
+
+        \n Security of Information
+        \n We take reasonable security measures to protect against unauthorized access to or unauthorized alteration, disclosure, or destruction of your personal information. This includes, among other things, encryption of data and the use of security protocols for data communication.
+
+        \n Changes to This Privacy Policy
+        \n We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.
+
+        \n Contact Us
+        \n If you have any questions about this Privacy Policy, please contact us.
+                "
+                android:fontFamily="@font/montserratregular"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:lineSpacingExtra="4dp"/>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>
