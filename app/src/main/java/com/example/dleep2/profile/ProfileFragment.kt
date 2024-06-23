@@ -9,9 +9,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.example.dleep2.LoginActivity
+import com.example.dleep2.PrivacyPolicyActivity
 import com.example.dleep2.R
+import com.example.dleep2.ServiceGuideActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.DocumentSnapshot
@@ -19,9 +22,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Locale
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class ProfileFragment : Fragment() {
 
@@ -39,6 +39,8 @@ class ProfileFragment : Fragment() {
     private lateinit var profdobvalues: TextView
     private lateinit var profsname: TextView
     private lateinit var profsemail: TextView
+    private lateinit var serviceGuideLayout: ConstraintLayout
+    private lateinit var privacyPolicyLayout: ConstraintLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +48,6 @@ class ProfileFragment : Fragment() {
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        // Dapatkan user saat ini dari Firebase Authentication
         currentUser = mAuth.currentUser
     }
 
@@ -54,7 +55,6 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
         buttonLogout = view.findViewById(R.id.buttonlogout)
@@ -67,8 +67,9 @@ class ProfileFragment : Fragment() {
         profdobvalues = view.findViewById(R.id.profdobvalues)
         profsname = view.findViewById(R.id.profsname)
         profsemail = view.findViewById(R.id.profsemail)
+        serviceGuideLayout = view.findViewById(R.id.constraintLayoutSg)
+        privacyPolicyLayout = view.findViewById(R.id.constraintLayoutPp)
 
-        // Load data pengguna dari Firestore
         loadUserData()
 
         buttonLogout.setOnClickListener {
@@ -80,25 +81,32 @@ class ProfileFragment : Fragment() {
         }
 
         buttonEdit.setOnClickListener {
-            // Ketika tombol "Edit" diklik
-            buttonEdit.visibility = View.GONE // Sembunyikan tombol "Edit"
-            buttonSave.visibility = View.VISIBLE // Tampilkan tombol "Save"
-            enableEditText() // Aktifkan EditText untuk mengedit
+            buttonEdit.visibility = View.GONE
+            buttonSave.visibility = View.VISIBLE
+            enableEditText()
         }
 
         buttonSave.setOnClickListener {
-            // Ketika tombol "Save" diklik
-            saveChanges() // Simpan perubahan
-            buttonSave.visibility = View.GONE // Sembunyikan tombol "Save"
-            buttonEdit.visibility = View.VISIBLE // Tampilkan tombol "Edit"
-            disableEditText() // Nonaktifkan EditText setelah penyimpanan
+            saveChanges()
+            buttonSave.visibility = View.GONE
+            buttonEdit.visibility = View.VISIBLE
+            disableEditText()
+        }
+
+        serviceGuideLayout.setOnClickListener {
+            val intent = Intent(activity, ServiceGuideActivity::class.java)
+            startActivity(intent)
+        }
+
+        privacyPolicyLayout.setOnClickListener {
+            val intent = Intent(activity, PrivacyPolicyActivity::class.java)
+            startActivity(intent)
         }
 
         return view
     }
 
     private fun enableEditText() {
-        // Aktifkan EditText untuk pengeditan
         editUsername.visibility = View.VISIBLE
         editUsername.setText(txtUsername.text)
         editEmail.visibility = View.VISIBLE
@@ -108,7 +116,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun disableEditText() {
-        // Nonaktifkan EditText setelah penyimpanan
         editUsername.visibility = View.GONE
         txtUsername.visibility = View.VISIBLE
         editEmail.visibility = View.GONE
@@ -116,19 +123,15 @@ class ProfileFragment : Fragment() {
     }
 
     private fun saveChanges() {
-        // Implementasi untuk menyimpan perubahan
         val newUsername = editUsername.text.toString()
         val newEmail = editEmail.text.toString()
 
-        // Dapatkan referensi dokumen untuk pengguna saat ini
         val user = mAuth.currentUser
         user?.let { currentUser ->
             val userRef = db.collection("users").document(currentUser.uid)
 
-            // Periksa apakah dokumen sudah ada sebelum memperbarui datanya
             userRef.get().addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot.exists()) {
-                    // Dokumen sudah ada, lanjutkan dengan pembaruan
                     val updates = hashMapOf(
                         "username" to newUsername,
                         "email" to newEmail
@@ -136,22 +139,19 @@ class ProfileFragment : Fragment() {
 
                     userRef.update(updates as Map<String, Any>)
                         .addOnSuccessListener {
-                            // Jika penyimpanan berhasil
                             Toast.makeText(
                                 activity,
                                 "Changes saved successfully!",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            loadUserData() // Load data terbaru dari Firestore
-                            populateUserData() // Perbarui tampilan dengan data terbaru
+                            loadUserData()
+                            populateUserData()
                         }
                         .addOnFailureListener { e ->
-                            // Jika penyimpanan gagal
                             Toast.makeText(activity, "Error: ${e.message}", Toast.LENGTH_SHORT)
                                 .show()
                         }
                 } else {
-                    // Dokumen tidak ditemukan, tidak perlu melakukan apa-apa
                     Toast.makeText(activity, "User data not found", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -167,7 +167,6 @@ class ProfileFragment : Fragment() {
                         userData = documentSnapshot
                         populateUserData()
                     } else {
-                        // Dokumen belum ada, buat dokumen baru dengan data default
                         val defaultUsername = user.displayName ?: user.email?.split("@")?.get(0) ?: ""
                         val defaultEmail = user.email ?: ""
                         val defaultUserData = hashMapOf(
@@ -177,7 +176,7 @@ class ProfileFragment : Fragment() {
 
                         userRef.set(defaultUserData)
                             .addOnSuccessListener {
-                                loadUserData() // Panggil kembali loadUserData() untuk memuat data baru
+                                loadUserData()
                             }
                             .addOnFailureListener { e ->
                                 Toast.makeText(activity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -205,12 +204,10 @@ class ProfileFragment : Fragment() {
 
             txtUsername.text = username
             txtEmail.text = email
-            profdobvalues.text = dateFormat.format(dateOfBirth)
+            profdobvalues.text = dateOfBirth?.let { dateFormat.format(it) } ?: ""
 
-            // Isi nilai-nilai lainnya seperti nama, email di header, dll.
             profsname.text = username
             profsemail.text = email
         }
     }
-
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.dleep2.adapters.VideoAdapter
+import com.example.dleep2.adapters.VideoLagiAdapter
 import com.example.dleep2.data.remote.VideoDatabase
 import com.example.dleep2.databinding.FragmentDiscoverStoriesBinding
 import kotlinx.coroutines.CoroutineScope
@@ -46,13 +47,31 @@ class DiscoverStoriesFragment : Fragment() {
                             putExtra("VIDEO_ID", video.videoId)
                             putExtra("VIDEO_TITLE", video.title)
                             putExtra("VIDEO_URL", video.videoUrl)
+                            putExtra("VIDEO_DESC", video.videoDesc)
+                            putExtra("VIDEO_SOURCE", video.source)
                         }
                         startActivity(intent)
                     }
                 }
+                binding.recyclerViewStories2.apply {
+                    layoutManager = GridLayoutManager(context, 2)
+                    val adapter = VideoLagiAdapter(videos) { video ->
+                        val intent = Intent(context, VideoActivity::class.java).apply {
+                            putExtra("VIDEO_ID", video.videoId)
+                            putExtra("VIDEO_TITLE", video.title)
+                            putExtra("VIDEO_URL", video.videoUrl)
+                            putExtra("VIDEO_DESC", video.videoDesc)
+                            putExtra("VIDEO_SOURCE", video.source)
+                        }
+                        startActivity(intent)
+                    }
+                    adapter.shuffleItems() // Shuffle items initially
+                    this.adapter = adapter
+                }
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

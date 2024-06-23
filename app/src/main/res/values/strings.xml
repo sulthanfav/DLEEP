@@ -37,4 +37,45 @@
 
         Film ini dianggap sebagai salah satu karya masterpiece dari Studio Ghibli karena visualnya
         yang memukau dan cerita yang mendalam tentang kehidupan, cinta, dan takdir.</string>
+    <string name="sgtext">
+
+    </string>
+
+    <string name="pptext">
+        Welcome to DLEEP – your trusted sleep and meditation companion app. Your privacy and the security of your personal data are of utmost importance to us. This Privacy Policy is designed to inform you about how we collect, use, and protect your personal information when you use our app. By utilizing DLEEP, you consent to the collection and use of information in accordance with this policy.
+
+        Information We Collect
+        To provide the most personalized and beneficial experience, DLEEP requires some personal information from you, including:
+
+        Email and Password: Used as your login credentials for access to the app.
+        Date of Birth: We use your date of birth to tailor sleep duration recommendations based on age.
+        App Usage Data: This includes, but is not limited to, data related to the features you use, your sound and meditation preferences, and your sleep tracking information.
+
+         Use of Information
+        The information you provide to DLEEP is used to:
+
+        Create and manage your account.
+        Tailor your sleep and meditation experience to your personal needs.
+        Provide analysis and statistics about your sleep patterns.
+        Improve and develop new features based on user feedback and usage patterns.
+        Communicate with you, including but not limited to, updates on the app, offers, and newsletters.
+
+        Sharing of Information
+        DLEEP is committed to not selling, renting, or sharing your personal information with third parties without your consent, except under the following circumstances:
+
+        Service Providers: We may share your information with service providers we use to support our business operations, such as cloud hosting, analytics services, and customer support services, provided they agree to keep this information confidential.
+        Legal Compliance: We will share personal information when required by law or if we believe in good faith that such action is necessary to comply with legal proceedings, protect the security or integrity of our users, or protect the rights, property, or safety of DLEEP.
+
+        Access and Control Over Your Information
+        You have the right to access, update, and delete your personal information. If you wish to make a request or have questions about your privacy, please contact us using the contact details provided in the app.
+
+        Security of Information
+        We take reasonable security measures to protect against unauthorized access to or unauthorized alteration, disclosure, or destruction of your personal information. This includes, among other things, encryption of data and the use of security protocols for data communication.
+
+        Changes to This Privacy Policy
+        We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.
+
+        Contact Us
+        If you have any questions about this Privacy Policy, please contact us.
+    </string>
 </resources>

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayoutDisc"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".alarm.SleepTrackerFragment"
-    android:background="@color/violetbox"
-    tools:layout_editor_absoluteX="15dp">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutDisc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/violetbox">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -143,13 +145,15 @@
 
         <TextView
             android:id="@+id/sleepdurvalue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserratbold"
             android:text="11,5 Hours"
             android:textColor="@color/white"
             android:textSize="12sp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sleepdurtitle" />
@@ -157,11 +161,24 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/weeklyupdated"
+        android:id="@+id/ursleep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserratbold"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/todaysleepatcard" />
+
+    <TextView
+        android:id="@+id/weeklyupdated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/montserratregular"
         android:text="Weekly Updated"
         android:textColor="@color/alarmname"
@@ -214,3 +231,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

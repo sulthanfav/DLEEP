@@ -1,169 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayoutDisc"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/violetbox"
     tools:context=".disc.DiscoverMeditationFragment">
 
-    <Button
-        android:id="@+id/buttonAllMusic"
-        android:layout_width="70dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/tab_button_pressed"
-        android:fontFamily="@font/montserratregular"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="All"
-        android:textColor="@drawable/tab_button_colors"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_editor_absoluteX="8dp"
-        app:layout_editor_absoluteY="62dp"
-        tools:layout_editor_absoluteX="13dp" />
-
-    <Button
-        android:id="@+id/buttonFairytale"
-        android:layout_width="70dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/tab_button_pressed"
-        android:fontFamily="@font/montserratregular"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="Fairytale"
-        android:textColor="@drawable/tab_button_colors"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/buttonAllMusic"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_editor_absoluteX="63dp"
-        app:layout_editor_absoluteY="62dp" />
-
-    <Button
-        android:id="@+id/buttonFolklore"
-        android:layout_width="70dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/tab_button_pressed"
-        android:fontFamily="@font/montserratregular"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="Folklore"
-        android:textColor="@drawable/tab_button_colors"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/buttonFairytale"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_editor_absoluteX="123dp"
-        app:layout_editor_absoluteY="62dp" />
-
-    <Button
-        android:id="@+id/buttonLifestyle"
-        android:layout_width="70dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/tab_button_pressed"
-        android:fontFamily="@font/montserratregular"
-        android:gravity="center"
-        android:padding="0dp"
-        android:text="Lifestyle"
-        android:textColor="@drawable/tab_button_colors"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/buttonFolklore"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_editor_absoluteX="198dp"
-        app:layout_editor_absoluteY="62dp" />
-
-    <TextView
-        android:id="@+id/taleofthewoods"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/montserratregular"
-        android:text="Tale of The Woods"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAllMusic" />
-
-    <TextView
-        android:id="@+id/seemore2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/montserratregular"
-        android:text="See More"
-        android:textColor="@color/brokenwhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.856"
-        app:layout_constraintStart_toEndOf="@+id/taleofthewoods"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAllMusic" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewStories"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutDisc"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:paddingBottom="8dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taleofthewoods"
-        app:spanCount="2"
-        tools:listitem="@layout/item_row_stories" />
-
-
-    <TextView
-        android:id="@+id/WhispersofAK"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserratregular"
-        android:text="Whispers of Animal Kingdom"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewStories" />
+        android:background="@color/violetbox">
 
-    <TextView
-        android:id="@+id/seemore3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/montserratregular"
-        android:text="See More"
-        android:textColor="@color/brokenwhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
-        app:layout_constraintStart_toEndOf="@+id/WhispersofAK"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewStories" />
+        <TextView
+            android:id="@+id/taleofthewoods"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserratregular"
+            android:text="Tale of The Woods"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewStories2"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:paddingBottom="8dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/WhispersofAK"
-        app:spanCount="2"
-        tools:listitem="@layout/item_row_stories_2" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewStories"
+            android:layout_width="365dp"
+            android:layout_height="230dp"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="8dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/taleofthewoods"
+            app:spanCount="2"
+            tools:listitem="@layout/item_row_stories" />
+
+        <TextView
+            android:id="@+id/WhispersofAK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserratregular"
+            android:text="Whispers of Animal Kingdom"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewStories" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewStories2"
+            android:layout_width="365dp"
+            android:layout_height="230dp"
+            android:paddingBottom="8dp"
+            android:layout_marginTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/WhispersofAK"
+            app:spanCount="2"
+            tools:listitem="@layout/item_row_stories_2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

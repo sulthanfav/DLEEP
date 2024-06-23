@@ -6,10 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".alarm.BedTimeFragment"
     android:id="@+id/constraintLayoutDisc"
-    android:background="@color/violetbox"
-    tools:layout_editor_absoluteX="15dp">
-
-    <!-- TODO: Update blank fragment layout -->
+    android:background="@color/violetbox">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/alarmconstlayout"
@@ -41,7 +38,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserratbold"
-            android:text="22 : 00 PM"
+            android:text="00:00"
             android:textColor="@color/white"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,9 +48,9 @@
             android:id="@+id/switch_toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:checked="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/alarmconstlayout" />
 
@@ -68,7 +65,6 @@
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/alarmtime" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -95,5 +91,17 @@
         app:layout_constraintTop_toBottomOf="@+id/alarmconstlayout"
         app:srcCompat="@drawable/addalarm" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/TimeToWake"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noalarm"
+        app:spanCount="2"
+        tools:listitem="@layout/timetowake" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

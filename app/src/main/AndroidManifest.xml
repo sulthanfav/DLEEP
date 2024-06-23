@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".Dleep2Application"
@@ -21,8 +23,24 @@
         android:theme="@style/Theme.DLEEP2"
         tools:targetApi="34">
         <activity
+            android:name=".PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ServiceGuideActivity"
+            android:exported="false" />
+        <activity
             android:name=".disc.VideoActivity"
             android:exported="false" />
+
+        <receiver
+            android:name=".alarm.AlarmReceiver"
+            android:exported="true" /> <!-- SnoozeReceiver -->
+        <receiver
+            android:name=".alarm.AlarmSnoozeReceiver"
+            android:exported="true" /> <!-- DismissReceiver -->
+        <receiver
+            android:name=".alarm.AlarmDismissReceiver"
+            android:exported="true" />
 
         <service
             android:name=".exoplayer.MusicService"
@@ -32,6 +50,11 @@
                 <action android:name="android.media.browse.MediaBrowserService" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".services.SleepMonitorService"
+            android:enabled="true"
+            android:exported="false" />
 
         <activity
             android:name=".VerifCodeActivity"
@@ -62,7 +85,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

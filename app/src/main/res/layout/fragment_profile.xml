@@ -16,18 +16,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="11dp"
-            android:fontFamily="@font/montserratregular"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserratbold"
             android:text="Profile"
             android:textColor="@color/white"
-            android:textSize="25sp"
+            android:textSize="20sp"
             tools:ignore="MissingConstraints" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
+            android:layout_width="363dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="45dp"
             android:layout_marginEnd="5dp"
             android:background="@color/violetbox">
@@ -74,14 +74,14 @@
                     android:id="@+id/profsname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/montserratbold"
                     android:text=""
                     android:textColor="@color/white"
                     android:textSize="19dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.436"
+                    app:layout_constraintHorizontal_bias="0.596"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -92,7 +92,7 @@
                 android:id="@+id/profspi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserratbold"
                 android:text="Personal Information"
@@ -103,11 +103,15 @@
                 app:layout_constraintTop_toBottomOf="@id/constraintLayoutHeaderProf" />
 
             <!-- Button Edit -->
+
+            <!-- Body - Username -->
+
             <Button
                 android:id="@+id/editprof"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="1dp"
                 android:background="@drawable/buttonblueedit"
                 android:fontFamily="@font/montserratregular"
                 android:gravity="center"
@@ -115,14 +119,13 @@
                 android:text="Edit"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.943"
+                app:layout_constraintHorizontal_bias="0.945"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/constraintLayoutHeaderProf" />
 
-            <!-- Body - Username -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutUsn"
-                android:layout_width="320dp"
+                android:layout_width="333dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/proftop"
@@ -178,7 +181,7 @@
             <!-- Body - Email -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutEmail"
-                android:layout_width="320dp"
+                android:layout_width="333dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/profmid"
@@ -234,7 +237,7 @@
             <!-- Body - Password -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutPassword"
-                android:layout_width="320dp"
+                android:layout_width="333dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/profmid"
@@ -276,10 +279,10 @@
             <!-- Body - Date of Birth -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutDoB"
-                android:layout_width="320dp"
+                android:layout_width="333dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/profmid"
+                android:background="@drawable/profbot"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/constraintLayoutPassword">
@@ -314,47 +317,6 @@
                     app:layout_constraintVertical_bias="0.518" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- Body - Lang -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayoutLang"
-                android:layout_width="320dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/profbot"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/constraintLayoutDoB">
-
-                <TextView
-                    android:id="@+id/proflang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/montserratregular"
-                    android:text="Language"
-                    android:textColor="@color/white"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/proflangvalues"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="232dp"
-                    android:fontFamily="@font/montserratbold"
-                    android:text="Language"
-                    android:textColor="@color/white"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.481" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
             <!-- Body - General Settings -->
             <!-- Body - Service Guide -->
             <!-- Body - Privacy Policy -->
@@ -363,7 +325,7 @@
                 android:id="@+id/profgs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserratbold"
                 android:text="General Settings"
@@ -371,11 +333,11 @@
                 android:textSize="17dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/constraintLayoutLang" />
+                app:layout_constraintTop_toBottomOf="@id/constraintLayoutDoB" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutSg"
-                android:layout_width="320dp"
+                android:layout_width="333dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/proftop"
@@ -401,7 +363,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutPp"
-                android:layout_width="320dp"
+                android:layout_width="333dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/profbot"
@@ -431,21 +393,24 @@
                 android:layout_width="67dp"
                 android:layout_height="23dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/buttonblueedit"
                 android:fontFamily="@font/montserratregular"
                 android:gravity="center"
                 android:padding="1dp"
+                android:visibility="gone"
                 android:text="Save"
                 android:textSize="12sp"
-                android:visibility="gone"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/constraintLayoutHeaderProf" />
 
             <Button
                 android:id="@+id/buttonlogout"
-                android:layout_width="320dp"
+                android:layout_width="333dp"
                 android:layout_height="33dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/buttonsavechange"
                 android:fontFamily="@font/montserratregular"
                 android:gravity="center"
@@ -456,7 +421,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.512"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPp" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -24,7 +24,6 @@ class DiscoverFragment : Fragment() {
                     0 -> replaceFragment(DiscoverSoundsFragment())
                     1 -> replaceFragment(DiscoverMusicFragment())
                     2 -> replaceFragment(DiscoverStoriesFragment())
-                    3 -> replaceFragment(DiscoverMeditationFragment())
                 }
             }
 

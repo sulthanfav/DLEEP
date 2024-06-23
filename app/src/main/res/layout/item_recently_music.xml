@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="375dp"
-    android:layout_height="50dp"
+    android:layout_height="70dp"
     android:layout_margin="3dp"
+    android:padding="2dp"
     android:background="@null"
     android:elevation="3dp">
 
@@ -13,59 +14,30 @@
         android:id="@+id/IconMusic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/MusicTime"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/MusicTime"
         app:srcCompat="@drawable/musicone" />
 
     <TextView
         android:id="@+id/MusicTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="2dp"
         android:fontFamily="@font/montserratregular"
         android:text="Clair de Lune"
         android:textColor="@color/white"
-        android:textSize="12dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/MusicTime"
-        app:layout_constraintStart_toStartOf="@+id/IconMusic"
+        app:layout_constraintStart_toEndOf="@+id/IconMusic"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/MusicTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
-        android:layout_marginBottom="2dp"
-        android:fontFamily="@font/montserratlight"
-        android:text="34s Left"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/IconMusic"
-        app:layout_constraintTop_toBottomOf="@+id/MusicTitle" />
-
-    <TextView
-        android:id="@+id/MusicComposer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:fontFamily="@font/montserratregular"
-        android:text="by Claude Debussy"
-        android:textColor="@color/white"
-        android:textSize="12dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/MusicTitle"
-        app:layout_constraintStart_toStartOf="@+id/IconMusic" />
 
     <ImageView
         android:id="@+id/playbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

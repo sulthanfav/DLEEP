@@ -1,6 +1,8 @@
 package com.example.dleep2.home
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +14,8 @@ import com.example.dleep2.adapters.SongAdapter
 import com.example.dleep2.databinding.FragmentHomeBinding
 import com.example.dleep2.other.Status
 import com.example.dleep2.ui.viewmodels.MainViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -22,7 +26,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding get() = _binding!!
 
     @Inject lateinit var songAdapter: SongAdapter
-    @Inject lateinit var RowSoundsHomeAdapter: RowSoundsHomeAdapter
+    @Inject lateinit var rowSoundsHomeAdapter: RowSoundsHomeAdapter
     lateinit var mainViewModel: MainViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,11 +38,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setupRecyclerView()
         setuprecyclerViewSounds()
 
-
         songAdapter.setItemClickListener {
             mainViewModel.playOrToggleSong(it)
         }
-        RowSoundsHomeAdapter.setItemClickListener {
+        rowSoundsHomeAdapter.setItemClickListener {
             mainViewModel.playOrToggleSong(it)
         }
         subscribeToObservers()
@@ -52,7 +55,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         binding.seemore2.setOnClickListener {
             val bundle = Bundle().apply {
-                putString("filter_type", "all")
+                putString("filter_type", "soundsdream")
             }
             val seeMoreFragment = SeeMoreFragment().apply {
                 arguments = bundle
@@ -64,6 +67,39 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 .commit()
         }
 
+        val db = FirebaseFirestore.getInstance()
+
+        // Mendapatkan ID pengguna saat ini
+        val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
+
+        // Mendapatkan data pengguna dari Firestore
+        currentUserUid?.let { uid ->
+            db.collection("users").document(uid)
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        val username = document.getString("username")
+                        binding.hello.text = "Hello, $username."
+                    } else {
+                        // Jika dokumen tidak ada
+                        binding.hello.text = "Hello, User."
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    // Penanganan kesalahan ketika gagal mengambil data dari Firestore
+                    binding.hello.text = "Hello, User."
+                    Log.w(TAG, "Error getting documents.", exception)
+                }
+        }
+
+        // Add the click listener for the button
+        binding.button5.setOnClickListener {
+            // Assuming you have a specific song item you want to play
+            val songToPlay = mainViewModel.mediaItems.value?.data?.find { it.title == "Presleep Lays" }
+            songToPlay?.let {
+                mainViewModel.playOrToggleSong(it)
+            }
+        }
     }
 
     private fun setupRecyclerView() {
@@ -78,14 +114,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
     }
+
     private fun setuprecyclerViewSounds() {
         binding.recyclerViewSounds.apply {
-            adapter = RowSoundsHomeAdapter
+            adapter = rowSoundsHomeAdapter
         }
 
         mainViewModel.mediaItems.observe(viewLifecycleOwner) { resource ->
             resource.data?.let { songs ->
-                RowSoundsHomeAdapter.songs = songs
+                rowSoundsHomeAdapter.songs = songs
             }
         }
     }
@@ -95,8 +132,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             when(result.status) {
                 Status.SUCCESS -> {
                     result.data?.let { songs ->
-                        val lofiSongs = songs.filter { it.type == "all" }
-                        RowSoundsHomeAdapter.songs = lofiSongs
+                        val lofiSongs = songs.filter { it.type == "soundsdream" }
+                        rowSoundsHomeAdapter.songs = lofiSongs
                         songAdapter.songs = songs
                     }
                 }

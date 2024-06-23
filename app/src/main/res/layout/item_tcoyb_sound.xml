@@ -34,16 +34,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pic" />
 
-    <TextView
-        android:id="@+id/type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserratregular"
-        android:text="Experience deep and restorative slee"
-        android:textColor="@color/brokenwhite"
-        android:textSize="9sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/judulASMR" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

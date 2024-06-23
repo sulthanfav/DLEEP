@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dleep2.FilterFragmentSounds
 import com.example.dleep2.R
-import com.example.dleep2.SeeMoreFragment
 import com.example.dleep2.adapters.AsmrAdapter
 import com.example.dleep2.adapters.RecentlyPlayedAdapter
 import com.example.dleep2.adapters.TcoybAdapter
@@ -60,27 +60,52 @@ class DiscoverSoundsFragment : Fragment() {
             mainViewModel.playOrToggleSong(it)
         }
         subscribeToObservers()
-        binding.textView28.setOnClickListener {
-            val bundle = Bundle().apply {
-                putString("filter_type", "lofi")
-            }
-            val seeMoreFragment = SeeMoreFragment().apply {
-                arguments = bundle
-            }
-            // Pindah ke fragment SeeMore
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, seeMoreFragment)
-                .addToBackStack(null)
-                .commit()
+        binding.button6.setOnClickListener {
+            replaceFragmentWithFilter("all")
         }
-        binding.textView30.setOnClickListener {
-            // Pindah ke fragment SeeMore
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.main_frame, SeeMoreFragment())
-                .addToBackStack(null)
-                .commit()
+
+        binding.button7.setOnClickListener {
+            replaceFragmentWithFilter("lofi")
+        }
+
+        binding.button8.setOnClickListener {
+            replaceFragmentWithFilter("water")
+        }
+
+        binding.button9.setOnClickListener {
+            replaceFragmentWithFilter("nature")
+        }
+
+        binding.button10.setOnClickListener {
+            replaceFragmentWithFilter("asmr")
+        }
+
+        binding.button13.setOnClickListener {
+            replaceFragmentWithFilter("brainwave")
         }
     }
+
+    private fun replaceFragmentWithFilter(filterType: String) {
+        val filterFragment = FilterFragmentSounds().apply {
+            arguments = Bundle().apply {
+                putString("filter_type", filterType)
+            }
+        }
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.fragmentContainerfilter, filterFragment)
+            ?.addToBackStack(null)
+            ?.commit()
+
+        // Sembunyikan semua tampilan yang terkait dengan daftar lagu
+        binding.textView26.visibility = View.GONE
+        binding.recyclerViewRecently.visibility = View.GONE
+        binding.asmrcolle.visibility = View.GONE
+        binding.recyclerViewASMR.visibility = View.GONE
+        binding.takingcare.visibility = View.GONE
+        binding.recyclerViewTCOYB.visibility = View.GONE
+    }
+
+
 
     private fun setuprecyclerViewASMR() {
         binding.recyclerViewASMR.apply {
@@ -119,9 +144,10 @@ class DiscoverSoundsFragment : Fragment() {
                 Status.SUCCESS -> {
                     result.data?.let { songs ->
                         // Filter lagu yang memiliki type "lofi"
-                        val lofiSongs = songs.filter { it.type == "lofi" }
-                        AsmrAdapter.songs = lofiSongs
-                        TcoybAdapter.songs = songs
+                        val FilterSongsAsmr = songs.filter { it.type == "asmr" }
+                        val FilterSongsBrainwave = songs.filter { it.type == "brainwave" }
+                        AsmrAdapter.songs = FilterSongsAsmr
+                        TcoybAdapter.songs = FilterSongsBrainwave
                     }
                 }
                 Status.ERROR -> Unit
